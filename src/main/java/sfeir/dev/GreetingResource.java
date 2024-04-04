@@ -4,7 +4,8 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import sfeir.dev.model.Person;
+import org.jboss.resteasy.reactive.RestQuery;
+import sfeir.dev.model.Hello;
 
 @Path("/api")
 public class GreetingResource {
@@ -19,7 +20,7 @@ public class GreetingResource {
     @GET
     @Path("/helloWithJson")
     @Produces(MediaType.APPLICATION_JSON)
-    public Person helloWithJson() {
-        return new Person("Axolotl");
+    public Hello helloWithJson(@RestQuery String name) {
+        return new Hello("Hello " + name + ", Axolotl says welcome !");
     }
 }
